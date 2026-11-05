@@ -8,6 +8,10 @@ Proyek analisis data end-to-end pada 1 juta transaksi peritel online (dataset pu
 ![SQLite](https://img.shields.io/badge/SQLite-star%20schema-003B57?logo=sqlite&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-dashboard-FF4B4B?logo=streamlit&logoColor=white)
 
+## English summary
+
+I analyse Online Retail II with a reproducible Python and SQLite pipeline, a star schema, and 15 analytical SQL queries. I examine sales performance, product concentration, customer segments, and observational group comparisons. The full-data output records net revenue of GBP 18,926,266.18 across 39,516 sales invoices and 5,875 registered customers. I distinguish these historical findings from the sample mode available in the interactive dashboard. I reproduce the full analysis with `make all` after installing the requirements and enabling access to the public dataset.
+
 ![Dashboard penjualan retail](assets/dashboard_overview.png)
 
 ## Daftar Isi
@@ -119,6 +123,12 @@ Catatan penting: dataset tidak memuat eksperimen terkontrol, jadi notebook 03 me
 
 </details>
 
+## Demo
+
+Tautan demo akan ditambahkan setelah deploy.
+
+Saya menjalankan dashboard dari root dengan `streamlit run app/dashboard.py`. Jika warehouse penuh belum ada, dashboard memakai sampel 5.000 baris, menampilkan penanda mode sampel, dan tidak menulis warehouse analisis penuh. KPI sampel mengikuti filter dan tidak menggantikan angka hasil penuh di README.
+
 ## Struktur Folder
 
 ```
@@ -154,10 +164,10 @@ analisis-penjualan-retail-sql-powerbi/
 │   ├── dashboard_figures.py         # figur Plotly bersama
 │   ├── run_sql.py                   # eksekusi semua query -> CSV
 │   └── viz.py                       # palet warna dan gaya grafik
-├── tests/                           # 47 pytest: pembersihan, kategori, warehouse, RFM, A/B, SQL
+├── tests/                           # 49 pytest: pembersihan, kategori, warehouse, RFM, A/B, SQL
 ├── .github/workflows/ci.yml         # ruff + pytest pada Python 3.12
 ├── Makefile, run_all.sh             # pipeline dari nol
-├── requirements.txt, pyproject.toml
+├── requirements.txt, requirements-dev.txt, pyproject.toml
 ├── CHANGELOG.md, CONTRIBUTING.md, LICENSE
 └── README.md
 ```
@@ -174,7 +184,7 @@ cd analisis-penjualan-retail-sql-powerbi
 # 2. Buat lingkungan virtual dan pasang dependensi
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 
 # 3. Jalankan seluruh pipeline (unduh -> bersihkan -> warehouse -> SQL -> notebook -> dashboard -> tes)
 bash run_all.sh                    # atau: make all
