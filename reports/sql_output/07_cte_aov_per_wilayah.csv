@@ -1,0 +1,4 @@
+store_name,region,invoices,revenue,avg_order_value,trimmed_aov_p99,avg_units_per_order,avg_lines_per_order
+Online Store - Rest of World,Rest of World,233,298463.2,1280.96,1030.78,810.4,25.0
+Online Store - Europe,Europe,3099,2544379.05,821.03,688.0,588.3,23.9
+Online Store - UK,United Kingdom,36184,16799849.9,464.29,389.94,253.6,25.5
