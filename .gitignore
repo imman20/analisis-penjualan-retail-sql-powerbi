@@ -1,0 +1,24 @@
+# Data mentah berukuran besar (> 20 MB) tidak dikomit; jalankan
+# `python -m src.data.download` untuk mengunduh ulang. Sampel 5.000 baris
+# di data/raw/sample/ tetap ikut dikomit.
+data/raw/*.zip
+data/raw/*.xlsx
+data/raw/*.csv
+data/processed/*.parquet
+data/processed/*.sqlite
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Streamlit dan editor
+.streamlit/secrets.toml
+.vscode/
+.idea/
+.DS_Store

@@ -1,0 +1,21 @@
+[project]
+name = "analisis-penjualan-retail-sql-powerbi"
+version = "1.0.0"
+description = "Analisis penjualan retail end-to-end: pembersihan data, star schema SQLite, SQL analitik, RFM, uji A/B, dan dashboard."
+authors = [{ name = "Immantaka Juniarsa", email = "immantakajuniarsa30@gmail.com" }]
+requires-python = ">=3.12"
+readme = "README.md"
+license = { text = "MIT" }
+
+[tool.ruff]
+line-length = 160
+target-version = "py312"
+extend-exclude = ["notebooks", "data"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
