@@ -1,10 +1,14 @@
 # Changelog
 
+## [Unreleased]
+
+- Saya menambahkan English summary, memeriksa tautan README, dan mendokumentasikan verifikasi penyempurnaan.
+- Saya memberi tag `v1.0.0` pada commit terakhir `main` sebelum penyempurnaan. Riwayat repositori linear sehingga tidak ada commit merge dengan dua parent.
+
+
 Semua perubahan penting pada proyek ini dicatat di sini.
 Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/)
 dan proyek ini menggunakan [Semantic Versioning](https://semver.org/lang/id/).
-
-## [Unreleased]
 
 ## [1.0.0] - 2025-11-05
 

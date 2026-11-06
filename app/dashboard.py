@@ -20,14 +20,12 @@ import streamlit as st
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from src.config import WAREHOUSE_DB  # noqa: E402
 from src.dashboard_data import (  # noqa: E402
     apply_filters,
     category_share,
     compute_kpis,
     country_revenue,
     day_hour_matrix,
-    load_flat,
     monthly_trend,
     rfm_segments,
     top_products,
@@ -41,14 +39,15 @@ from src.dashboard_figures import (  # noqa: E402
     fig_rfm_segments,
     fig_top_products,
 )
+from src.dashboard_source import load_dashboard_source  # noqa: E402
 from src.viz import CATEGORY_ORDER  # noqa: E402
 
 st.set_page_config(page_title="Dashboard Penjualan Retail", page_icon=":bar_chart:", layout="wide")
 
 
 @st.cache_data(show_spinner="Memuat warehouse...")
-def get_data() -> pd.DataFrame:
-    return load_flat(WAREHOUSE_DB)
+def get_data() -> tuple[pd.DataFrame, bool]:
+    return load_dashboard_source()
 
 
 def fmt_gbp(value: float) -> str:
@@ -59,14 +58,12 @@ def fmt_gbp(value: float) -> str:
     return f"GBP {value:,.0f}"
 
 
-if not WAREHOUSE_DB.exists():
-    st.error(f"Warehouse belum ada di {WAREHOUSE_DB}. Jalankan `make data clean-data warehouse` terlebih dahulu.")
-    st.stop()
-
-df = get_data()
+df, is_sample = get_data()
 
 # ---- Baris filter: satu baris di atas semua grafik agar seluruh dashboard mengikuti irisan yang sama.
 st.title("Dashboard Penjualan Retail")
+if is_sample:
+    st.warning("Mode sampel: saya menampilkan sampel 5.000 baris yang tersedia di repo. Angka dashboard ini tidak mewakili hasil analisis penuh di README.")
 st.caption("Online Retail II (UCI) - 1 Des 2009 s.d. 9 Des 2011. Pendapatan dalam GBP; retur sudah diperhitungkan pada pendapatan bersih.")
 
 min_date, max_date = df["full_date"].min().date(), df["full_date"].max().date()

@@ -20,7 +20,7 @@ help:
 	@echo "  make all        - seluruh pipeline dari nol"
 
 install:
-	$(PYTHON) -m pip install -r requirements.txt
+	$(PYTHON) -m pip install -r requirements-dev.txt
 
 data:
 	$(PYTHON) -m src.data.download
